@@ -3,369 +3,289 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2025年加密货币市场分析报告</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <title>2025年至今加密货币市场分析报告</title>
+    <script src="https://cdn.tailwindcss.com?plugins=typography"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
             background-color: #FFFFFF;
             color: #000000;
         }
-        .highlight-text { color: #4D6BFE; }
-        .highlight-bg { background-color: #4D6BFE; }
-        .highlight-border { border-color: #4D6BFE; }
-
+        .highlight-text {
+            color: #4D6BFE;
+        }
+        .highlight-bg {
+            background-color: #4D6BFE;
+        }
+        .highlight-border {
+            border-color: #4D6BFE;
+        }
         .bento-box {
-            background-color: #f9f9f9; /* Slight off-white for better contrast with pure white bg */
-            border: 1px solid #e0e0e0;
-            border-radius: 24px; /* Apple-like rounded corners */
+            background-color: #f9fafb; /* Slightly off-white for boxes */
+            border-radius: 1.5rem; /* More rounded corners */
             padding: 1.5rem; /* p-6 */
-            display: flex;
-            flex-direction: column;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease-in-out;
-            overflow: hidden; /* Ensure content doesn't break rounded corners */
+            overflow: hidden;
+            position: relative;
         }
         .bento-box:hover {
             transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05), 0 6px 6px rgba(0,0,0,0.07);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.07), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-
-        .tech-gradient-blue-light {
-            background: linear-gradient(135deg, rgba(77, 107, 254, 0.05) 0%, rgba(77, 107, 254, 0.01) 100%);
+        .超大字体 {
+            font-size: 4rem; /* 64px */
+            line-height: 1;
+            font-weight: 800; /* extrabold */
         }
-        .tech-gradient-blue-medium {
-            background: linear-gradient(135deg, rgba(77, 107, 254, 0.15) 0%, rgba(77, 107, 254, 0.05) 100%);
-        }
-        .tech-gradient-blue-strong {
-             background: linear-gradient(135deg, rgba(77, 107, 254, 0.25) 0%, rgba(77, 107, 254, 0.1) 100%);
-        }
-
-        .ultra-large-text { font-size: clamp(3rem, 8vw, 7rem); line-height: 1; font-weight: 800; }
-        .super-large-text { font-size: clamp(2.5rem, 6vw, 5rem); line-height: 1; font-weight: 700; }
-        .large-text { font-size: clamp(1.5rem, 4vw, 2.5rem); line-height: 1.1; font-weight: 600; }
-
-        .chinese-title { font-weight: 700; }
-        .english-caption { font-size: 0.75rem; color: #555; text-transform: uppercase; letter-spacing: 0.05em; margin-top: 0.25rem; }
-
-        /* Responsive grid adjustments */
-        @media (min-width: 1920px) {
-            .xl\\:grid-cols-5 {
-                grid-template-columns: repeat(5, minmax(0, 1fr));
-            }
-            .xl\\:col-span-2 {
-                grid-column: span 2 / span 2;
-            }
-             .xl\\:col-span-3 {
-                grid-column: span 3 / span 3;
+        @media (min-width: 768px) {
+            .超大字体 {
+                font-size: 6rem; /* 96px */
             }
         }
-        canvas { max-width: 100%; height: auto !important; }
+        @media (min-width: 1024px) {
+            .超大字体 {
+                font-size: 7.5rem; /* 120px */
+            }
+        }
+        .英文小字 {
+            font-size: 0.875rem; /* text-sm */
+            color: #6b7280; /* gray-500 */
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .highlight-gradient {
+            background-image: linear-gradient(to bottom right, #4D6BFE, rgba(77, 107, 254, 0.7));
+        }
+        .highlight-gradient-text {
+            background: linear-gradient(to right, #4D6BFE, #3b82f6); /* Example gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .icon-bg-circle {
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.75rem;
+        }
+        .header-with-icon {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* gap-3 */
+            margin-bottom: 1rem; /* mb-4 */
+        }
+        .header-with-icon i {
+            font-size: 1.5rem; /* text-2xl */
+        }
     </style>
 </head>
-<body class="antialiased">
-    <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16 max-w-[1920px]">
+<body class="min-h-screen p-4 md:p-8 lg:p-12">
 
-        <header class="text-center mb-16 md:mb-24">
-            <h1 class="text-5xl md:text-7xl lg:text-8xl font-extrabold mb-4">
-                2025 加密市场<span class="highlight-text">洞察</span>
-            </h1>
-            <p class="text-xl md:text-2xl text-gray-700">关键趋势与未来展望分析报告</p>
-            <p class="english-caption">CRYPTO MARKET ANALYSIS & OUTLOOK 2025</p>
-        </header>
+    <header class="mb-8 md:mb-12 text-center">
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-extrabold mb-2">
+            <span class="highlight-gradient-text">2025</span> 加密货币市场分析报告
+        </h1>
+        <p class="英文小字">CRYPTO MARKET ANALYSIS REPORT</p>
+    </header>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-6 md:gap-8">
+    <main class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
 
-            <!-- Executive Summary -->
-            <div class="bento-box md:col-span-2 lg:col-span-2 xl:col-span-3 xl:row-span-2 tech-gradient-blue-strong p-6 md:p-8 flex flex-col justify-between">
-                <div>
-                    <h2 class="text-3xl md:text-4xl chinese-title mb-3">执行摘要</h2>
-                    <p class="english-caption mb-4">EXECUTIVE SUMMARY</p>
-                    <p class="text-sm md:text-base text-gray-800 leading-relaxed">
-                        2025年初至今，加密市场面临全球宏观经济放缓、通胀持续及主要经济体政策调整。市场整体波动，Q1市值回调。比特币显韧性，以太坊及山寨币承压。Bybit被盗等安全事件冲击信心。机构采用模式变化，AI+加密、RWA增长，DeFi与NFT面临挑战。
-                    </p>
+        <!-- Executive Summary & Overall Market -->
+        <div class="bento-box md:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col justify-between">
+            <div>
+                <div class="header-with-icon">
+                    <i class="fas fa-chart-line highlight-text"></i>
+                    <h2 class="text-2xl font-bold">执行摘要 & 市场概览</h2>
                 </div>
-                <div class="mt-6 md:mt-8 flex justify-end">
-                    <i class="fas fa-file-alt fa-3x md:fa-4x opacity-20"></i>
-                </div>
+                <p class="英文小字 mb-2">EXECUTIVE SUMMARY & MARKET OVERVIEW</p>
+                <p class="text-gray-700 text-sm mb-4">
+                    2025年初至今市场复杂多变，宏观经济放缓与通胀持续，政策调整显著。Q1市值回调，比特币显韧性，山寨币承压。安全事件冲击信心，细分领域发展各异。
+                </p>
             </div>
-
-            <!-- Global GDP Outlook -->
-            <div class="bento-box tech-gradient-blue-light p-6 items-center">
-                <div class="w-full">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl chinese-title">全球经济</h3>
-                            <p class="english-caption">GLOBAL ECONOMY</p>
-                        </div>
-                        <i class="fas fa-globe-americas fa-2x highlight-text opacity-70"></i>
-                    </div>
-                    <p class="ultra-large-text highlight-text mt-4">3.1<span class="text-3xl">%</span></p>
-                    <p class="text-sm text-gray-700 mt-2">OECD 预测2025年全球GDP增长率，较2024年3.2%放缓。</p>
-                </div>
+            <div class="mt-auto text-right">
+                <p class="超大字体 highlight-text">-19%</p>
+                <p class="font-semibold text-xl">Q1总市值回调 <span class="英文小字">Q1 MARKET CAP CORRECTION</span></p>
             </div>
-
-            <!-- Inflation -->
-            <div class="bento-box tech-gradient-blue-light p-6 items-center">
-                 <div class="w-full">
-                    <div class="flex justify-between items-start">
-                        <div>
-                            <h3 class="text-xl chinese-title">通货膨胀</h3>
-                            <p class="english-caption">INFLATION</p>
-                        </div>
-                        <i class="fas fa-chart-line fa-2x highlight-text opacity-70"></i>
-                    </div>
-                    <p class="super-large-text highlight-text mt-4">3.6<span class="text-2xl">%</span></p>
-                    <p class="text-sm text-gray-700 mt-2">OECD国家服务价格通胀中位数，通胀压力持续。</p>
-                </div>
-            </div>
-            
-            <!-- US Policy -->
-            <div class="bento-box md:col-span-1 lg:col-span-2 xl:col-span-2 tech-gradient-blue-medium p-6">
-                <h3 class="text-2xl chinese-title">美国政策转向</h3>
-                <p class="english-caption mb-3">U.S. POLICY SHIFT</p>
-                <p class="text-sm text-gray-800 mb-2">特朗普政府发布行政命令，强调“监管清晰性”，支持数字资产负责任增长，推广美元稳定币，禁止美国CBDC。</p>
-                <div class="flex items-center space-x-2 mt-auto">
-                    <i class="fas fa-landmark fa-2x opacity-60"></i>
-                    <p class="text-xs text-gray-600">成立总统数字资产市场工作组，David Sacks任顾问。</p>
-                </div>
-            </div>
-
-             <!-- SEC Stance Change -->
-            <div class="bento-box tech-gradient-blue-light p-6">
-                <h3 class="text-xl chinese-title">SEC立场调整</h3>
-                <p class="english-caption mb-3">SEC STANCE ADJUSTMENT</p>
-                <p class="text-sm text-gray-800 mb-2">终止对Opensea、Robinhood调查，撤销对Coinbase指控。Memecoins不再视为证券。Hester Peirce领导新加密工作组。</p>
-                <div class="flex justify-end mt-auto">
-                     <i class="fas fa-balance-scale fa-3x opacity-20"></i>
-                </div>
-            </div>
-
-            <!-- EU MiCA Regulation -->
-            <div class="bento-box tech-gradient-blue-light p-6">
-                <h3 class="text-xl chinese-title">欧盟 MiCA 法规</h3>
-                <p class="english-caption mb-3">EU MICA REGULATION</p>
-                <p class="text-sm text-gray-800 mb-2">为欧盟27国建立统一加密监管框架。CASPs许可2025年1月启动，过渡期最长至2026年6月。</p>
-                 <div class="flex justify-end mt-auto">
-                    <i class="fab fa-ethereum fa-3x opacity-20"></i>
-                </div>
-            </div>
-
-            <!-- Market Cap Q1 -->
-            <div class="bento-box tech-gradient-blue-medium p-6 items-center text-center">
-                <i class="fas fa-arrow-trend-down fa-3x highlight-text mb-3"></i>
-                <h3 class="text-2xl chinese-title">Q1 市值回调</h3>
-                <p class="english-caption">Q1 MARKET CAP CORRECTION</p>
-                <p class="ultra-large-text mt-2">-19<span class="text-3xl">%</span></p>
-                <p class="text-sm text-gray-700">至2.65万亿美元 (CoinMetrics)</p>
-            </div>
-
-            <!-- BTC Performance Q1 -->
-            <div class="bento-box tech-gradient-blue-light p-6 items-center text-center">
-                <i class="fab fa-bitcoin fa-3x highlight-text mb-3"></i>
-                <h3 class="text-xl chinese-title">比特币 Q1</h3>
-                <p class="english-caption">BITCOIN Q1</p>
-                <p class="super-large-text mt-2">-11.8<span class="text-2xl">%</span></p>
-                <p class="text-sm text-gray-700">展现相对韧性</p>
-            </div>
-
-            <!-- ETH Performance Q1 -->
-            <div class="bento-box tech-gradient-blue-light p-6 items-center text-center">
-                <i class="fab fa-ethereum fa-3x highlight-text mb-3"></i>
-                <h3 class="text-xl chinese-title">以太坊 Q1</h3>
-                <p class="english-caption">ETHEREUM Q1</p>
-                <p class="super-large-text mt-2">-45<span class="text-2xl">%</span></p>
-                <p class="text-sm text-gray-700">面临较大压力</p>
-            </div>
-
-            <!-- Security Incident: Bybit -->
-            <div class="bento-box md:col-span-2 lg:col-span-2 xl:col-span-2 tech-gradient-blue-strong p-6 text-white" style="background-color: #1a1a1a;"> <!-- Darker box for emphasis -->
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="text-2xl chinese-title text-red-400">重大安全事件</h3>
-                        <p class="english-caption text-gray-400">MAJOR SECURITY INCIDENT</p>
-                    </div>
-                    <i class="fas fa-shield-virus fa-3x text-red-500"></i>
-                </div>
-                <p class="super-large-text text-red-400 mt-4">$1.5<span class="text-2xl align-baseline">B</span></p>
-                <p class="text-lg text-gray-300">Bybit交易所2月被盗，历史最大规模之一。</p>
-                <p class="text-sm text-gray-400 mt-1">据信Lazarus Group所为，严重冲击市场信心。</p>
-            </div>
-            
-            <!-- RWA Growth -->
-            <div class="bento-box tech-gradient-blue-medium p-6">
-                <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="text-2xl chinese-title">RWA 增长</h3>
-                        <p class="english-caption">RWA TOKENIZATION GROWTH</p>
-                    </div>
-                    <i class="fas fa-landmark-flag fa-2x highlight-text"></i>
-                </div>
-                <p class="super-large-text highlight-text mt-3">+37<span class="text-2xl">%</span></p>
-                <p class="text-sm text-gray-700 mt-1">Q1 RWA市场规模 (不含稳定币) 达 <span class="font-bold">$18.5B</span>。 BUIDL基金达$2B AUM。</p>
-                 <div class="w-full h-16 mt-2">
-                    <canvas id="rwaChart"></canvas>
-                </div>
-            </div>
-
-            <!-- AI + Crypto -->
-            <div class="bento-box tech-gradient-blue-medium p-6">
-                 <div class="flex justify-between items-start">
-                    <div>
-                        <h3 class="text-2xl chinese-title">AI+加密融合</h3>
-                        <p class="english-caption">AI & CRYPTO CONVERGENCE</p>
-                    </div>
-                    <i class="fas fa-microchip fa-2x highlight-text"></i>
-                </div>
-                <p class="large-text highlight-text mt-3">关注度 <span class="super-large-text">35.7<span class="text-xl">%</span></span></p>
-                <p class="text-sm text-gray-700 mt-1">Q1 AI成为热门叙事，dApp活跃钱包增长<span class="font-bold">29%</span>。</p>
-                <div class="w-full h-16 mt-2">
-                    <canvas id="aiCryptoChart"></canvas>
-                </div>
-            </div>
-
-            <!-- Institutional Adoption -->
-            <div class="bento-box lg:col-span-2 xl:col-span-2 tech-gradient-blue-light p-6">
-                <h3 class="text-2xl chinese-title">机构采用</h3>
-                <p class="english-caption mb-3">INSTITUTIONAL ADOPTION</p>
-                <div class="flex items-center space-x-4">
-                    <i class="fas fa-university fa-3x opacity-60"></i>
-                    <div>
-                        <p class="text-4xl font-bold highlight-text">86<span class="text-xl">%</span></p>
-                        <p class="text-sm text-gray-700">机构已持有或计划2025年配置数字资产 (Coinbase调研)。</p>
-                    </div>
-                </div>
-                <p class="text-xs text-gray-600 mt-3">比特币ETF Q1末总持有超100万枚BTC，但2-3月现资金流出。</p>
-            </div>
-
-            <!-- DeFi TVL -->
-            <div class="bento-box tech-gradient-blue-light p-6">
-                <h3 class="text-xl chinese-title">DeFi TVL 下滑</h3>
-                <p class="english-caption mb-2">DEFI TVL DECLINE</p>
-                <p class="super-large-text text-red-500">-27<span class="text-2xl">%</span></p>
-                <p class="text-sm text-gray-700">Q1 TVL降至 $156B (DappRadar)。BTCfi等创新持续。</p>
-                <div class="flex justify-end mt-auto">
-                    <i class="fas fa-wallet fa-3x opacity-20"></i>
-                </div>
-            </div>
-
-            <!-- NFT Market -->
-            <div class="bento-box tech-gradient-blue-light p-6">
-                <h3 class="text-xl chinese-title">NFT 市场萎缩</h3>
-                <p class="english-caption mb-2">NFT MARKET CONTRACTION</p>
-                <p class="super-large-text text-red-500">-24<span class="text-2xl">%</span></p>
-                <p class="text-sm text-gray-700">Q1交易额至 $1.5B。RWA NFT兴起。</p>
-                 <div class="flex justify-end mt-auto">
-                    <i class="fas fa-image fa-3x opacity-20"></i>
-                </div>
-            </div>
-            
-            <!-- GameFi Users -->
-            <div class="bento-box tech-gradient-blue-medium p-6">
-                <h3 class="text-xl chinese-title">GameFi 用户</h3>
-                <p class="english-caption mb-2">GAMEFI USERS</p>
-                <p class="super-large-text highlight-text">1M<span class="text-2xl align-text-top">+</span></p>
-                <p class="text-sm text-gray-700">Q1日活用户破百万，但30天流失率达 <span class="font-bold text-red-500">60%</span>。</p>
-                <div class="flex justify-between items-center mt-auto pt-2">
-                    <i class="fas fa-gamepad fa-2x opacity-60"></i>
-                    <p class="text-xs text-gray-600">Solana占费用50%</p>
-                </div>
-            </div>
-
-            <!-- China e-CNY -->
-            <div class="bento-box tech-gradient-blue-light p-6">
-                <h3 class="text-xl chinese-title">中国 数字人民币</h3>
-                <p class="english-caption mb-2">CHINA E-CNY</p>
-                <p class="text-sm text-gray-800">积极推广e-CNY，拓展跨境和企业应用，机场设服务中心。mBridge项目测试跨境支付。</p>
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 50" class="w-full h-12 opacity-20 mt-auto">
-                    <path d="M10 40 C 20 10, 30 10, 40 40 S 50 70, 60 40 S 70 10, 80 40 S 90 70, 100 40" stroke="#000000" stroke-width="2" fill="none" />
-                </svg>
-            </div>
-
-            <!-- Conclusion & Outlook (Larger) -->
-            <div class="bento-box md:col-span-2 lg:col-span-4 xl:col-span-5 tech-gradient-blue-strong p-6 md:p-8">
-                <div class="flex justify-between items-start mb-4">
-                    <div>
-                        <h2 class="text-3xl md:text-4xl chinese-title">结论与展望</h2>
-                        <p class="english-caption">CONCLUSION & OUTLOOK</p>
-                    </div>
-                    <i class="fas fa-binoculars fa-3x md:fa-4x highlight-text opacity-70"></i>
-                </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 text-sm text-gray-800 leading-relaxed">
-                    <p><strong class="highlight-text">宏观主导:</strong> 经济、通胀、央行政策持续影响。</p>
-                    <p><strong class="highlight-text">监管清晰化:</strong> 美国政策调整，欧盟MiCA实施，但差异仍存。</p>
-                    <p><strong class="highlight-text">核心演进:</strong> BTC价值存储，ETH L1价值捕获与L2发展。</p>
-                    <p><strong class="highlight-text">赛道创新:</strong> AI+Crypto, DePIN, RWA潜力巨大，优胜劣汰加剧。</p>
-                    <p><strong class="highlight-text">机构深化:</strong> 长期兴趣浓厚，产品多样化，ETF扩展。</p>
-                    <p><strong class="highlight-text">安全合规:</strong> 行业生命线，投入将大幅增加。</p>
-                </div>
-                <p class="mt-6 text-base text-gray-800">2025年市场处关键十字路口，机遇与挑战并存。市场成熟度提升，但高波动性短期难改。投资者需保持谨慎，关注多方因素。</p>
-            </div>
-
         </div>
 
-        <footer class="text-center mt-16 md:mt-24 py-8 border-t border-gray-200">
-            <p class="text-sm text-gray-500">&copy; <span id="currentYear"></span> 加密货币市场分析报告. 仅供参考.</p>
-            <p class="english-caption">FOR INFORMATIONAL PURPOSES ONLY</p>
-        </footer>
-    </div>
+        <!-- Macro Economy -->
+        <div class="bento-box">
+            <div class="header-with-icon">
+                <i class="fas fa-globe-americas highlight-text"></i>
+                <h2 class="text-xl font-bold">全球宏观经济</h2>
+            </div>
+            <p class="英文小字 mb-3">GLOBAL MACROECONOMY</p>
+            <p class="text-5xl font-extrabold mb-1">3.1<span class="text-2xl">%</span></p>
+            <p class="text-gray-700 text-sm mb-2">OECD全球GDP增长预测 (2025)</p>
+            <p class="text-gray-700 text-sm">增长放缓，通胀持续，政策不确定性高。贸易紧张局势加剧，IMF下调增长至<strong class="highlight-text">2.8%</strong>。</p>
+        </div>
 
-    <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+        <!-- Regulation -->
+        <div class="bento-box">
+            <div class="header-with-icon">
+                <i class="fas fa-gavel highlight-text"></i>
+                <h2 class="text-xl font-bold">监管与政策</h2>
+            </div>
+            <p class="英文小字 mb-3">REGULATION & POLICY</p>
+            <ul class="list-none space-y-1 text-sm text-gray-700">
+                <li><strong class="highlight-text">美国:</strong> 政策转向，SEC/CFTC友好迹象，<span class="font-mono highlight-bg text-white px-1 rounded text-xs">FIT21</span>待定。</li>
+                <li><strong class="highlight-text">欧盟:</strong> <span class="font-mono highlight-bg text-white px-1 rounded text-xs">MiCA</span>逐步实施。</li>
+                <li><strong class="highlight-text">亚洲:</strong> 中国禁私推公，新加坡平衡创新。</li>
+            </ul>
+        </div>
 
-        // Chart for RWA Growth (Example: Simple Bar Chart)
-        const rwaCtx = document.getElementById('rwaChart')?.getContext('2d');
-        if (rwaCtx) {
-            new Chart(rwaCtx, {
-                type: 'bar',
-                data: {
-                    labels: ['2024 Q4', '2025 Q1'],
-                    datasets: [{
-                        label: 'RWA Market Cap ($B)',
-                        data: [13.5, 18.5], // Example data: 18.5B for Q1, assuming previous was lower for growth
-                        backgroundColor: ['rgba(77, 107, 254, 0.6)','rgba(77, 107, 254, 0.8)'],
-                        borderColor: ['#4D6BFE','#4D6BFE'],
-                        borderWidth: 1
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: { display: false, beginAtZero: true },
-                        x: { display: false }
-                    },
-                    plugins: { legend: { display: false } }
-                }
-            });
-        }
+        <!-- Security Incidents -->
+        <div class="bento-box md:col-span-2 lg:col-span-2 bg-red-50 border-red-200">
+            <div class="header-with-icon">
+                <i class="fas fa-shield-virus text-red-500"></i>
+                <h2 class="text-2xl font-bold text-red-700">安全事件频发</h2>
+            </div>
+            <p class="英文小字 mb-2 text-red-600">SECURITY INCIDENTS</p>
+            <div class="flex items-baseline mb-2">
+                <p class="超大字体 text-red-500 mr-2">$1.6B+</p>
+                <p class="font-semibold text-xl text-red-700">Q1损失 <span class="英文小字">Q1 LOSSES</span></p>
+            </div>
+            <p class="text-red-700 text-sm">
+                <strong class="text-red-600">Bybit</strong>交易所被盗<strong class="text-red-600">~$1.5B</strong>，创历史记录。Phemex被盗。Rug Pulls激增。严重打击市场信心。
+            </p>
+            <div class="absolute bottom-0 right-0 opacity-10 w-2/3">
+                <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M0 80 Q 25 20, 50 70 T 100 50 T 150 80 T 200 40" stroke="rgba(239, 68, 68, 0.5)" fill="transparent" stroke-width="4" stroke-dasharray="8 4"/>
+                </svg>
+            </div>
+        </div>
 
-        // Chart for AI+Crypto (Example: Doughnut Chart for attention)
-        const aiCryptoCtx = document.getElementById('aiCryptoChart')?.getContext('2d');
-        if (aiCryptoCtx) {
-            new Chart(aiCryptoCtx, {
-                type: 'doughnut',
-                data: {
-                    labels: ['AI+Crypto Focus', 'Other Narratives'],
-                    datasets: [{
-                        data: [35.7, 64.3],
-                        backgroundColor: ['#4D6BFE', 'rgba(77, 107, 254, 0.2)'],
-                        hoverBackgroundColor: ['#3b59e0', 'rgba(77, 107, 254, 0.3)'],
-                        borderWidth: 0,
-                    }]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    cutout: '70%',
-                    plugins: {
-                        legend: { display: false },
-                        tooltip: { enabled: false }
-                    }
-                }
-            });
-        }
-    </script>
+        <!-- Bitcoin -->
+        <div class="bento-box">
+            <div class="header-with-icon">
+                <i class="fab fa-bitcoin highlight-text"></i>
+                <h2 class="text-xl font-bold">比特币 (BTC)</h2>
+            </div>
+            <p class="英文小字 mb-3">BITCOIN PERFORMANCE</p>
+            <p class="text-gray-700 text-sm mb-1">Q1价格<strong class="highlight-text"> -11.8%</strong></p>
+            <p class="text-gray-700 text-sm mb-1">相对韧性，ETF资金流向波动。</p>
+            <p class="text-gray-700 text-sm">Core v25.0发布，USDT登陆闪电网络。</p>
+            <div class="mt-2 h-16 w-full">
+                <svg viewBox="0 0 100 50" class="w-full h-full" preserveAspectRatio="none">
+                  <polyline points="0,30 10,35 20,20 30,25 40,15 50,20 60,10 70,18 80,12 90,22 100,20" fill="none" stroke="#4D6BFE" stroke-width="1.5"/>
+                  <line x1="0" y1="40" x2="100" y2="40" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="2 2"/>
+                </svg>
+            </div>
+        </div>
+
+        <!-- Ethereum -->
+        <div class="bento-box">
+            <div class="header-with-icon">
+                <i class="fab fa-ethereum highlight-text"></i>
+                <h2 class="text-xl font-bold">以太坊 (ETH)</h2>
+            </div>
+            <p class="英文小字 mb-3">ETHEREUM DEVELOPMENTS</p>
+            <p class="text-gray-700 text-sm mb-1">Q1价格<strong class="text-red-500"> -45%</strong></p>
+            <p class="text-gray-700 text-sm mb-1">L1价值捕获挑战，L2生态繁荣。</p>
+            <p class="text-gray-700 text-sm"><strong class="highlight-text">Pectra</strong>升级 (EIP-7702, EIP-7251)。</p>
+            <div class="mt-2 h-16 w-full">
+                 <svg viewBox="0 0 100 50" class="w-full h-full" preserveAspectRatio="none">
+                  <polyline points="0,10 10,15 20,30 30,25 40,35 50,30 60,40 70,32 80,38 90,28 100,30" fill="none" stroke="#F87171" stroke-width="1.5"/>
+                  <line x1="0" y1="10" x2="100" y2="10" stroke="#e5e7eb" stroke-width="0.5" stroke-dasharray="2 2"/>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Hot Sectors -->
+        <div class="bento-box md:col-span-2 lg:col-span-2 lg:row-span-2 flex flex-col">
+            <div class="header-with-icon">
+                <i class="fas fa-fire highlight-text"></i>
+                <h2 class="text-2xl font-bold">热门细分赛道</h2>
+            </div>
+            <p class="英文小字 mb-4">EMERGING SECTORS</p>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 flex-grow">
+                <div class="p-4 rounded-lg bg-gray-100">
+                    <div class="flex items-center mb-2">
+                        <i class="fas fa-brain text-lg mr-2 highlight-text"></i>
+                        <h3 class="font-semibold">AI + 加密货币</h3>
+                    </div>
+                    <p class="text-sm text-gray-600">dUAW <strong class="highlight-text">+29%</strong>, 投资者关注度 <strong class="highlight-text">35.7%</strong>.</p>
+                    <p class="英文小字">AI + CRYPTO CONVERGENCE</p>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-100">
+                     <div class="flex items-center mb-2">
+                        <i class="fas fa-cubes text-lg mr-2 highlight-text"></i>
+                        <h3 class="font-semibold">DePIN</h3>
+                    </div>
+                    <p class="text-sm text-gray-600">活跃项目 <strong class="highlight-text">>1170</strong>, 市场规模预计 <strong class="highlight-text">$32B+</strong> (年底).</p>
+                    <p class="英文小字">DECENTRALIZED PHYSICAL INFRASTRUCTURE</p>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-100 sm:col-span-2">
+                     <div class="flex items-center mb-2">
+                        <i class="fas fa-landmark text-lg mr-2 highlight-text"></i>
+                        <h3 class="font-semibold">RWA 代币化</h3>
+                    </div>
+                    <p class="text-sm text-gray-600">市值(不含稳定币) <strong class="highlight-text">$18.5B</strong>, Q1增长 <strong class="highlight-text">+37%</strong>. 潜力 <strong class="highlight-text">$10T</strong> (2030).</p>
+                    <p class="英文小字">REAL WORLD ASSET TOKENIZATION</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 mt-4">DeFi & NFT 调整但创新持续 (BTCfi, RWA NFT)。GameFi 用户增长但留存挑战。</p>
+        </div>
+
+        <!-- Institutional Adoption -->
+        <div class="bento-box">
+            <div class="header-with-icon">
+                <i class="fas fa-building-columns highlight-text"></i>
+                <h2 class="text-xl font-bold">机构采用</h2>
+            </div>
+            <p class="英文小字 mb-3">INSTITUTIONAL ADOPTION</p>
+            <p class="text-gray-700 text-sm mb-1">ETF资金流向波动，山寨币ETF兴趣增。</p>
+            <p class="text-gray-700 text-sm mb-1"><strong class="highlight-text">Strategy</strong>等企业持续配置BTC。</p>
+            <p class="text-gray-700 text-sm mb-1">家族办公室/HNWI增持意愿强。</p>
+            <p class="text-gray-700 text-sm">VC投资Q1 <strong class="highlight-text">$4.8B</strong> (含Binance巨额融资)。</p>
+        </div>
+
+        <!-- Key Altcoins -->
+        <div class="bento-box">
+            <div class="header-with-icon">
+                <i class="fas fa-coins highlight-text"></i>
+                <h2 class="text-xl font-bold">主要山寨币</h2>
+            </div>
+            <p class="英文小字 mb-3">MAJOR ALTCOINS</p>
+            <ul class="list-none space-y-1 text-sm text-gray-700">
+                <li><strong>SOL:</strong> Q1 <span class="text-red-500">-34.1%</span>, 但收入&活动旺盛。</li>
+                <li><strong>BNB:</strong> 份额稳定, 网络指标增长。</li>
+                <li><strong>XRP:</strong> Q1 <span class="highlight-text">+0.5%</span>, 优于大盘。</li>
+                <li><strong>ADA/AVAX:</strong> 表现不佳，指标萎缩/混合。</li>
+            </ul>
+        </div>
+        
+        <!-- Conclusion & Outlook -->
+        <div class="bento-box md:col-span-2 lg:col-span-4">
+            <div class="header-with-icon">
+                <i class="fas fa-binoculars highlight-text"></i>
+                <h2 class="text-2xl font-bold">结论与展望</h2>
+            </div>
+            <p class="英文小字 mb-3">CONCLUSION & OUTLOOK</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 text-sm text-gray-700">
+                <p><strong class="highlight-text">宏观主导:</strong> 经济、通胀、央行政策仍是关键。</p>
+                <p><strong class="highlight-text">监管清晰化:</strong> 美国政策形态，欧盟MiCA实施。</p>
+                <p><strong class="highlight-text">核心资产演进:</strong> BTC价值存储，ETH L1价值捕获。</p>
+                <p><strong class="highlight-text">赛道创新加速:</strong> AI+Crypto, DePIN, RWA潜力巨大。</p>
+                <p><strong class="highlight-text">机构采用深化:</strong> ETP/ETF扩展，产品多样化。</p>
+                <p><strong class="highlight-text">安全与合规:</strong> 行业生命线，投入将大幅增加。</p>
+            </div>
+            <p class="mt-4 text-sm text-gray-800 font-semibold">市场处关键十字路口，机遇与挑战并存。成熟度提升，但高波动性持续。投资者需谨慎。
+            <span class="英文小字 block mt-1">MARKET AT A CRITICAL JUNCTURE. OPPORTUNITIES & CHALLENGES. CAUTION ADVISED.</span>
+            </p>
+        </div>
+
+    </main>
+
+    <footer class="mt-12 text-center text-xs text-gray-500">
+        <p>© 2025 加密货币市场分析。仅供参考，不构成投资建议。</p>
+        <p>DATA SOURCES AS PER REPORT. VISUALIZATION FOR ILLUSTRATIVE PURPOSES.</p>
+    </footer>
+
 </body>
 </html>
